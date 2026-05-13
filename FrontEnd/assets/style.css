@@ -58,8 +58,26 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+.edition {
+	display: flex;
+	background-color: black;
+	width: 100%;
+	height: 59px;
+	justify-content: center;
+	align-items: center;
+}
+.edition h2{
+	color : white;
+	font-size: 16px;
+	font-family:'Work Sans';
+	font-weight: 400;
+}
+.edition i{
+	color:white;
+}
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 h1{
@@ -107,7 +125,10 @@ a:visited{
 a:hover {
 	color: #B1663C;
 }
+#logout {
 
+	cursor: pointer;
+}
 #introduction {
 	display: flex;
 	align-items: center;
@@ -131,33 +152,48 @@ a:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+
+#gestionProjet{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	gap : 4px;
+	margin-bottom: 20px;	
 }
-.filtre{
+#gestionProjet h2{
+	margin-right: 15px;
+}
+
+#filtre{
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	margin-bottom: 30px;
 }
-.filtre button{
+
+#filtre button:nth-last-child(-n+3){
+color: #1D6154;
+background-color: white;
+}
+#filtre button{
 	display: flex;
 	border-radius : 60px;
 	border : 1px solid #1D6154;
-	color: #1D6154;
 	justify-content: center;
 	padding: 9px 25px 9px 25px;
 	font-family: 'Syne';
 	align-content: center;
 	font-size: 16px;
-	background-color: white;
 }
-.filtre button:hover{
+#filtre button:hover{
+	background-color: #1D6154;
+	color: white;
+}
+#noFilter{
 	background-color: #1D6154;
 	color: white;
 }
 .gallery {
+	padding-top: 30px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -168,6 +204,200 @@ a:hover {
 .gallery img {
 	width: 100%;
 
+}
+
+#modaleTest{
+	width : 630px;
+	min-height : 500px;
+	max-height : 700px;
+	border: none;
+	border-radius: 10px;
+}
+
+/* solution trouvée sur https://github.com/whatwg/html/issues/7732*/  
+body:has(dialog[open]) { 
+  overflow-y: hidden;  
+  touch-action: none; 
+} 
+#modaleTest h2{
+	display: flex;
+	font-family: "work Sans";
+	font-size: 26px;
+	color: black;
+	justify-content: center;
+	font-weight: 400;
+	margin-bottom: 0px;
+}
+
+#cancel {
+	margin-top: 20px;
+}
+#sectionModal1{
+
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+	margin-top: 0;
+	gap: 30px;
+}
+#sectionModal1 > i {
+	margin-top: 20px;
+	margin-right : 10px;
+	width: 100%;
+	display: flex;
+	justify-content:flex-end;
+}
+
+.modal1-body{ 
+display: flex; 
+flex-wrap: wrap; 
+gap : 10px; 
+padding-left: 60px;
+
+}
+.modal1-body i{
+	position: relative;
+	bottom: 80px;
+	right: 23px;
+	background-color: black;
+	color: white;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+	width: 15px;
+	height: 15px;
+}
+.modal1-img{
+
+	width : 75px;
+	height : 100px;
+}
+
+#add-project {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 237px;
+	height: 35px;
+	border: none;
+	text-align: center;
+	border-radius: 60px ;
+}
+hr{
+	height: 1px;
+	width : 420px;
+	border-top: none;
+	border-left: none;
+	border-right:none;
+	color: #B3B3B3;
+}
+#sectionModal2{
+
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+.headerModal2{
+	display: flex;
+	justify-content: space-between;
+}
+.modal2-body{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+
+}
+#addimg{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: auto;
+	width: 70%;
+	background-color:#E8F1F6;
+	gap: 10px;
+	align-self: center;
+}
+#addimg img{
+	max-width: 200px;
+	max-height: 200px;
+}
+
+#addimg-text{
+	font-size: 10px;
+}
+.modal2-body form{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	align-items: center;
+}
+form > input{
+
+	height: 50px;
+	font-family: "Work Sans";
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding-left: 10px;
+	width: 70%;
+}
+
+input[type=file]::file-selector-button{
+display:none;
+}
+#image-newproject{
+	display:none;
+}
+#addimg-button{
+
+	background-color: #CBD6DC;
+	border-radius: 30px;
+	width: 175px;
+}
+
+#addimg-button p{
+	text-align: center ;
+	padding : 10px;
+	color: #306685;
+}
+.modal2-body select{
+	font-family: "Work Sans";
+	height: 50px;
+	border: none;
+	background-color: white;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 70%;	
+}
+.title-label{
+	align-self: normal;
+	padding-left: 100px;
+}
+.category-label{
+	align-self: normal;
+	padding-left: 100px;
+}
+
+.categoryOption{
+
+	font-family: 'Work Sans';
+}
+#validation {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	height: 35px;
+	width: 40%;
+	text-align: center;
+	border-radius: 60px;
+	border: none;
 }
 #contact {
 	width: 50%;
@@ -202,7 +432,7 @@ margin: auto;
 }
 
 input[type="submit"]{
-	font-family: 'Syne';
+	font-family: 'Work Sans';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
@@ -228,7 +458,10 @@ input[type="submit"]{
 	display: flex;
 	flex-direction: column;
 }
-
+#login form input{
+	display:flex;
+	align-self: center;
+}
 #login input {
 	height: 50px;
 	font-size: 1.2em;
@@ -237,6 +470,7 @@ input[type="submit"]{
 }
 #login label {
 	margin: 2em 0 1em 0;
+	padding-left : 85px;
 }
 #login p{
 	text-align: center;
