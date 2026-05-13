@@ -26,11 +26,11 @@
     <section id="login">
 		<h2>Log In</h2>
 		<h3 class="info"></h3>
-		<form id="form" action="#" method="post">
+		<form id="form" method="post" novalidate>
 			<label for="email">Email</label>
-			<input type="texte" name="email" id="email">
+			<input type="text" name="email" id="email" required>
 			<label for="mdp">Mot de passe</label>
-			<input type="texte" name="mdp" id="mdp"></input>
+			<input type="password" name="mdp" id="mdp" required></input>
 			<input type="submit" value="Se connecter">
 			<p>Mot de passe oublié</p>
 		</form>

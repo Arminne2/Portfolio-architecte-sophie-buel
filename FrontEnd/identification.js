@@ -1,7 +1,8 @@
-function EnvoyerIdentification(){
-const formulaireLogin = document.getElementById("form");
-console.log(formulaireLogin);
-formulaireLogin.addEventListener("submit", function(event){
+//Fonction qui permet d'envoyer le formulaire d'identification et vérifier l'autentification
+function SendIdentification(){
+const formLogin = document.getElementById("form");
+console.log(formLogin);
+formLogin.addEventListener("submit", function(event){
 event.preventDefault();
 const login = {
     email: event.target.querySelector("[name=email]").value,
@@ -18,19 +19,19 @@ fetch("http://localhost:5678/api/users/login", {
 })
 //.then(function(){console.log(identification)});
 .then(async (identification) => {
- const token = await identification.json();
-localStorage.setItem("token", token);
+ const data = await identification.json();
+localStorage.setItem("token", data.token);
     if (identification.status !== 200) {
-      console.log("erreur");
+      console.log("error");
       const noUser = document.querySelector(".info");
-      noUser.innerText = "l'utilisateur n'existe pas";
+      noUser.innerText = "identifiants incorrects";
     }
     if (identification.status == 200){
        window.location.href="index.html";
-       console.log(token);
+       console.log(data.token);
     }
   });
 });
 
 }
-EnvoyerIdentification();
+SendIdentification();
