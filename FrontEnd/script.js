@@ -54,7 +54,7 @@ if (responseToken !== null) {
     buttonChange();
 
     const openModal = document.getElementById("open");
-    const modale = document.getElementById("modaleTest");
+    const modale = document.getElementById("modal");
 
     openModal.addEventListener("click", () => {
         const modale1 = modale.firstElementChild;
@@ -129,7 +129,7 @@ async function categorie() {
 
     }
 }
-const modal = document.getElementById("modaleTest");
+const modal = document.getElementById("modal");
 const modale1 = modal.firstElementChild;
 //Fonction qui récupère le template du HTML et génère sa structure
 async function template1Gen() {
@@ -224,7 +224,7 @@ function template2Gen() {
         modal2.remove();
         template2Gen();
     }
-    const modalTotal = document.getElementById("modaleTest");
+    const modalTotal = document.getElementById("modal");
 
     const template2 = document.getElementById("modal2-template");
 
@@ -269,6 +269,7 @@ function template2Gen() {
             console.log(input.files);
             if (input.files[0].type === "image/png" || input.files[0].type === "image/jpg" || input.files[0].type === "image/jpeg") {
                 if (input.files[0].size <= 4000000) {
+                    document.getElementById("addimg").style.padding="0"
                     document.querySelector("#addimg-button").style.display = "none"
                     document.querySelector("#addimg-text").style.display = "none"
                     document.getElementById("inputImage").src = "";
