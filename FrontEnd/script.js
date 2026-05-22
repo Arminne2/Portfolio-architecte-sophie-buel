@@ -1,7 +1,7 @@
 //fonction qui stock les projets dans une variable
-document.addEventListener("DOMContentLoaded", test());
+document.addEventListener("DOMContentLoaded", loadProject());
 
-async function test() {
+async function loadProject() {
     console.log("j'ai été lancée");
     let data = await getProject();
     projects(data);
@@ -198,7 +198,7 @@ async function modalProject() {
                 .then(() => {
                     modale1.remove();
             template1Gen();
-            test();
+            loadProject();
                 })
         });
     };
@@ -228,7 +228,7 @@ function template2Gen() {
                 return response.json();
             }).then((data) => {
                 console.log(data);
-                test();
+                loadProject();
             })
         modal2.remove();
         template2Gen();
