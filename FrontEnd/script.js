@@ -1,8 +1,11 @@
 //fonction qui stock les projets dans une variable
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", test());
+
+async function test() {
+    console.log("j'ai été lancée");
     let data = await getProject();
     projects(data);
-})
+}
 //Fonction qui récupère les projets via l'API.
 async function getProject() {
     const responseProj = await fetch("http://localhost:5678/api/works/");
@@ -92,7 +95,7 @@ function projects(works) {
         figureElement.appendChild(titleElement);
     }
 }
-//Fonction qui permet de filtrer
+//Fonction qui permet de filtrer par catégorie
 async function filters(categorieId) {
     let data = await getProject();
     let noFilter = document.getElementById("noFilter");
@@ -130,7 +133,7 @@ async function categorie() {
     }
 }
 const modal = document.getElementById("modal");
-const modale1 = modal.firstElementChild;
+//const modale1 = modal.firstElementChild;
 //Fonction qui récupère le template du HTML et génère sa structure
 async function template1Gen() {
 
@@ -164,9 +167,11 @@ async function template1Gen() {
 }
 //Fonction qui génère les projets dans la première page modale et permet de les supprimer
 async function modalProject() {
+    const modale1 = modal.firstElementChild;
     let works = await getProject();
     let modalBody = document.querySelector(".modal1-body");
     modalBody.innerHTML = "";
+    console.log(modale1);
     for (let i = 0; i < works.length; i++) {
         let div = document.createElement("div");
         let imgModal1 = document.createElement("img");
@@ -190,8 +195,11 @@ async function modalProject() {
                     'Authorization': `Bearer ${responseToken}`
                 }
             })
-            modale1.remove();
+                .then(() => {
+                    modale1.remove();
             template1Gen();
+            test();
+                })
         });
     };
 }
@@ -219,7 +227,8 @@ function template2Gen() {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                console.log(data)
+                console.log(data);
+                test();
             })
         modal2.remove();
         template2Gen();
@@ -259,7 +268,7 @@ function template2Gen() {
     });
 
     const categoryList = clone2.querySelector(".catList");
-//Fonction qui rajoute la preview de l'image
+    //Fonction qui rajoute la preview de l'image
     function addImage(eventImage) {
         const input = eventImage.target;
         const previewImage = document.getElementById("inputImage");
@@ -269,7 +278,7 @@ function template2Gen() {
             console.log(input.files);
             if (input.files[0].type === "image/png" || input.files[0].type === "image/jpg" || input.files[0].type === "image/jpeg") {
                 if (input.files[0].size <= 4000000) {
-                    document.getElementById("addimg").style.padding="0"
+                    document.getElementById("addimg").style.padding = "0"
                     document.querySelector("#addimg-button").style.display = "none"
                     document.querySelector("#addimg-text").style.display = "none"
                     document.getElementById("inputImage").src = "";
@@ -328,7 +337,7 @@ function template2Gen() {
             check();
         }
     })
-//Fonction qui vérifie que les champs titre,catégorie et l'image sont bien remplis et met le bouton en vert si c'est le cas
+    //Fonction qui vérifie que les champs titre,catégorie et l'image sont bien remplis et met le bouton en vert si c'est le cas
     function check() {
         if (checkCategory === true && checkTitle === true && checkImage === true) {
             buttonValidation.removeAttribute("disabled");
